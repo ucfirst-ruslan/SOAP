@@ -1,0 +1,48 @@
+<?xml version ='1.0' encoding ='UTF-8' ?> 
+<definitions name='Calculator' 
+ targetNamespace='http://example.org/CalcServise'
+ xmlns:tns='http://php.loc/SOAP/task1/cal.wsdl' 
+ xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+ xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+ xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/' 
+ xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+ xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+
+<message name='getResultRequest'> 
+ <part name='num1' type='xsd:float'/> 
+ <part name='num2' type='xsd:float'/>
+ <part name='operator' type='xsd:string'/>
+</message> 
+<message name='getResultResponse'> 
+ <part name='getResult' type='xsd:float'/> 
+</message> 
+
+<portType name='getResultPortType'>
+ <operation name='getResult'> 
+  <input message='tns:getResultRequest'/> 
+  <output message='tns:getResultResponse'/> 
+ </operation> 
+</portType> 
+
+<binding name='getResultBinding' type='tns:getResultPortType'>
+ <soap:binding style='rpc' 
+  transport='http://schemas.xmlsoap.org/soap/http'/> 
+ <operation name='getResult'> 
+  <soap:operation soapAction='urn:xmethods-delayed-numbers#getResult'/>
+  <input> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-numbers' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </input> 
+  <output> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-numbers' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </output> 
+ </operation> 
+</binding> 
+
+<service name='CalculatorService'> 
+ <port name='getResultPort' binding='getResultBinding'>
+  <soap:address location='http://192.168.0.15/~user10/php/SOAP/task1/server.php'/> 
+ </port> 
+</service> 
+</definitions> 
