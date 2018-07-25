@@ -4,7 +4,7 @@ $client = new SoapClient("calc.wsdl");
 
 try
 {
-	print "Response: ". $client->getResult(11, 20, "div");
+	print "Response: ". $client->getResult(11, 20, "summ");
 }
 catch (SoapFault $exception)
 {

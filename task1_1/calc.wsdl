@@ -42,7 +42,9 @@
 
 <service name='CalculatorService'> 
  <port name='getResultPort' binding='getResultBinding'>
-  <soap:address location='http://192.168.0.15/~user10/php/SOAP/task1/server.php'/> 
+  <soap:address location='http://192.168.0.15/~user10/php/SOAP/task1/server.php'/>
  </port> 
 </service> 
-</definitions> 
+</definitions>
+
+<!--http://php.loc/SOAP/task1/server.php-->
