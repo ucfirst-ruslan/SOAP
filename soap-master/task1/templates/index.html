@@ -1,0 +1,149 @@
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<title>%TITLE%</title>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">		
+			<div class="col text-center">
+				<h1>%TITLE%</h1>
+				<div style="color: #FF0000; font-size: 15px;"><strong>%ERRORS%</strong></div>
+			</div>
+		</div>
+    
+    <div class="text-center">
+      <h2 class="display-3"><span class="badge badge-danger">SOAP REALIZATION</span></h2>
+    </div>
+    
+    <div class="text-center">
+      <h2><span class="badge badge-primary">Country SOAP</span></h2>
+      <a href="%COUNTRYURL%?WSDL" target="_blank">URL: %COUNTRYURL%?WSDL</a>
+    </div>
+    
+		<div class="row">		
+			<div class="col">
+				<h2><span class="badge badge-info">ALL Countries Avalible Functions</span></h2>
+        <div style="overflow-y: scroll; height:400px;"><small>%COUNTRYSOAPFUNCTIONS%</small></div>        
+			</div>
+      <div class="col">
+        <h2><span class="badge badge-info">Get Continents</span></h2>
+        {{CONTINENTS|<div>%SCODE% %SNAME%</div>}}   
+        <h2><span class="badge badge-info">Get Countries</span></h2>
+        <div style="overflow-y: scroll; height:400px;">{{COUNTRIES|<div>%SISOCODE% %SNAME%</div>}}</div>
+      </div>
+		</div>
+    <div class="text-center">
+      <h2><span class="badge badge-info">Get Country FULL info by param ISO CODE=UA</span></h2>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h4>ISO CODE</h4>
+        {{COUNTRYFULL|<div>%SISOCODE%</div>}}
+      </div>
+      <div class="col">
+        <h4>SNAME</h4>
+        {{COUNTRYFULL|<div>%SNAME%</div>}}
+      </div>
+      <div class="col">
+        <h4>sCapitalCity</h4>
+        {{COUNTRYFULL|<div>%SCAPITALCITY%</div>}}
+      </div>
+      <div class="col">
+        <h4>sCurrencyISOCode</h4>
+        {{COUNTRYFULL|<div>%SCURRENCYISOCODE%</div>}}
+      </div>
+      <div class="col">
+        <h4>sCountryFlag</h4>
+        {{COUNTRYFULL|<img src="%SCOUNTRYFLAG%" alt="flag"></img>}}
+      </div>
+    </div>
+  
+    <div class="text-center">
+      <h2><span class="badge badge-primary">ISBN SOAP</span></h2>
+      <a href="%ISBNURL%?WSDL" target="_blank">URL: %ISBNURL%?WSDL</a>
+    </div>
+  
+    <div class="row">		
+			<div class="col">
+				<h2><span class="badge badge-info">ALL ISBN Avalible Functions</span></h2>
+        <div><small>%ISBNSOAPFUNCTIONS%</small></div>        
+			</div>
+      <div class="col">
+				<h2><span class="badge badge-info">ISBN 9789667047702 Valid:</span></h2>
+        <div>%ISBNVALID%</div>        
+			</div>
+    </div>
+  
+    <div class="text-center">
+      <h2 class="display-3"><span class="badge badge-danger">CURL REALIZATION</span></h2>
+    </div>
+  
+    <div class="text-center">
+      <h2><span class="badge badge-primary">Country CURL</span></h2>
+      <a href="%COUNTRYURL%?WSDL" target="_blank">URL: %COUNTRYURL%?WSDL</a>
+    </div>
+  
+    <div class="row">		
+			<div class="col">
+				<h2><span class="badge badge-info">ALL Countries Avalible Functions</span></h2>        
+        <div style="overflow-y: scroll; height:400px;">
+          {{COUNTRYCURLFUNCTIONS|<div>%NAME%</div>}}
+        </div>        
+			</div> 
+      <div class="col">
+        <h2><span class="badge badge-info">Get Continents</span></h2>
+        {{CONTINENTSCURL|<div>%SCODE% %SNAME%</div>}}
+        <h2><span class="badge badge-info">Get Countries</span></h2>
+        <div style="overflow-y: scroll; height:400px;">{{COUNTRIESCURL|<div>%SISOCODE% %SNAME%</div>}}</div>
+      </div>
+		</div>
+  
+    <div class="text-center">
+      <h2><span class="badge badge-info">Get Country FULL info by param ISO CODE=UA</span></h2>
+    </div>
+  
+    <div class="row">
+      <div class="col">
+        <h4>ISO CODE</h4>
+        {{COUNTRYFULLSOAP|<div>%SISOCODE%</div>}}
+      </div>
+      <div class="col">
+        <h4>SNAME</h4>
+        {{COUNTRYFULLSOAP|<div>%SNAME%</div>}}
+      </div>
+      <div class="col">
+        <h4>sCapitalCity</h4>
+        {{COUNTRYFULLSOAP|<div>%SCAPITALCITY%</div>}}
+      </div>
+      <div class="col">
+        <h4>sCurrencyISOCode</h4>
+        {{COUNTRYFULLSOAP|<div>%SCURRENCYISOCODE%</div>}}
+      </div>
+      <div class="col">
+        <h4>sCountryFlag</h4>
+        {{COUNTRYFULLSOAP|<img src="%SCOUNTRYFLAG%" alt="flag"></img>}}
+      </div>
+    </div>
+  
+    <div class="text-center">
+      <h2><span class="badge badge-primary">ISBN CURL</span></h2>
+      <a href="%ISBNURL%?WSDL" target="_blank">URL: %ISBNURL%?WSDL</a>
+    </div>
+  
+    <div class="row">		
+			<div class="col">
+				<h2><span class="badge badge-info">ALL ISBN Avalible Functions</span></h2>     
+        <div style="overflow-y: scroll; height:400px;">
+          {{ISBNSOAPFUNCTIONSCURL|<div>%NAME%</div>}}
+        </div> 
+			</div>
+      <div class="col">
+				<h2><span class="badge badge-info">ISBN 9789667047702 Valid:</span></h2>
+        <div>%ISBNVALIDCURL%</div>        
+			</div>
+    </div>
+  
+	</div>
+</body>
+</html>

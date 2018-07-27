@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" 
+             xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" 
+             xmlns:tns="http://php-kossworm917948.codeanyapp.com/soap/task2/server/" 
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             name="carWSDL" 
+             >
+  <types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://php-kossworm917948.codeanyapp.com/soap/task2/server/">
+        <xs:complexType name="Car">
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"  minOccurs="1" maxOccurs="1"/>
+            <xs:element name="mark" type="xs:string"  minOccurs="1" maxOccurs="1"/>
+            <xs:element name="model" type="xs:string"  minOccurs="1" maxOccurs="1"/>
+            <xs:element name="year" type="xs:int"  minOccurs="0" maxOccurs="1"/>
+            <xs:element name="engine" type="xs:double"  minOccurs="0" maxOccurs="1"/>
+            <xs:element name="color" type="xs:string"  minOccurs="0" maxOccurs="1"/>
+            <xs:element name="maxspeed" type="xs:int"  minOccurs="0" maxOccurs="1"/>
+            <xs:element name="price" type="xs:double"  minOccurs="0" maxOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      <xs:complexType name="CarList">
+        <xs:complexContent>
+          <xs:restriction base="soapenc:Array">
+             <xs:attribute ref="soapenc:arrayType" wsdl:arrayType="tns:Car[]"/>
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="getCarListRequestType">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getByIdRequestType">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:long"  minOccurs="1" maxOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Order">
+          <xs:sequence>
+            <xs:element name="idcar" type="xs:long"  minOccurs="1" maxOccurs="1"/>
+            <xs:element name="firstname" type="xs:string"  minOccurs="1" maxOccurs="1"/>
+            <xs:element name="lastname" type="xs:string"  minOccurs="1" maxOccurs="1"/>
+            <xs:element name="payment" type="xs:string"  minOccurs="1" maxOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+    </xs:schema>
+  </types>
+  <!-- типы запросов ответов -->
+   <message name="OrderRequest">
+    <part name="parameters" type="tns:Order"/>
+  </message>
+  <message name="getByIdRequest">
+    <part name="parameters" element="tns:getByIdRequestType"/>
+  </message>
+   <message name="getByIdResponse">
+    <part name="parameters" type="tns:Car"/>
+  </message>
+  <message name="getCarListRequest">
+    <part name="parameters" element="tns:getCarListRequestType"/>
+  </message>
+  <message name="getCarListResponse">
+    <part name="parameters" type="tns:CarList"/>
+  </message>
+  <portType name="CarServiceSoapType">
+    <operation name="getCarList">
+      <input message="tns:getCarListRequest"/>
+      <output message="tns:getCarListResponse"/>
+    </operation>
+    <operation name="getById">
+      <input message="tns:getByIdRequest"/>
+      <output message="tns:getByIdResponse"/>
+    </operation>
+    <operation name="Order">
+      <input message="tns:OrderRequest"/>
+      <!--<output message="tns:getByIdResponse"/>-->
+    </operation>
+  </portType>
+  <binding name="CarServiceSoapBinding" type="tns:CarServiceSoapType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getCarList">
+      <soap:operation soapAction="" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="getById">
+      <soap:operation soapAction="" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Order">
+      <soap:operation soapAction="" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="CarService">
+    <port name="CarServiceSoap" binding="tns:CarServiceSoapBinding">
+      <soap:address location="http://php-kossworm917948.codeanyapp.com/soap/task2/server/index.php"/>
+    </port>
+  </service>
+</definitions>
