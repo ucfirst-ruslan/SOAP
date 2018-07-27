@@ -7,9 +7,6 @@ class Controller
 
 	public function __construct()
 	{
-		$this->model = new Model();
-
-
 		if (isset($_POST))
 		{
 
@@ -19,19 +16,20 @@ class Controller
 		{
 			$this->defaultPage();
 		}
-
-		$this->view->templateRender();
 	}
 
 	private function sendRequest()
 	{
-		$this->model->sendRequest();
+		$model = new Model();
+		
+		$model->sendRequestCelsius();
+		$celsius = $model->getCelsius();
+		
+		$model->sendRequestCountry();
+		$country = $model->getCountry();
 
 		$this->view = new View(TEMPLATE_RESULT);
 
-		$mArray = $this->model->getArray();
-
-		$this->view->addToReplace($mArray);
 	}
 
 	private function defaultPage()

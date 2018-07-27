@@ -1,16 +1,18 @@
 <?php
 
+include_once 'IGetServices.php';
 include_once 'curlService.php';
 include_once 'soapService.php';
 
+
 class getService implements IGetServices
 {
+	use curlService, soapService;
+		
 	protected $url;
 	protected $data;
 	protected $section;
 
-	use curlService, soapService;
-	
 	/**
 	 * @param $data
 	 * @return $this->data
@@ -68,7 +70,7 @@ class getService implements IGetServices
 
 	public function getContent($mode='SOAP')
 	{
-		if ('SOAP' === $mode)
+		if ('SOAP' == $mode)
 		{
 			$this->soapGetContent();
 			return $this->content;
