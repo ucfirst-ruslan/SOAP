@@ -1,0 +1,39 @@
+.input {
+    width: 211px;
+}
+
+caption {
+    font-size: 30px;
+    font-weight: 700;
+}
+.table td, .table th {
+	vertical-align: inherit;
+}
+.table th {
+	text-align: center;
+}
+
+div.cart {
+    float: right;
+}
+
+div.cart img {
+    height: 50px;
+}
+
+.cart-num {
+    background-color: red;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    border-radius: 50px;
+    position: relative;
+    top: -60px;
+    right: -40px;
+    color: white;
+    font-weight: 600;
+}
+
+.modal-card-foot {
+	font-weight: 600; 
+}

@@ -7,10 +7,12 @@ class Model
 	private $request;
 	private $celsius;
 	private $country;
+	private $error;
 
 	public function __construct()
 	{
 		$this->request = new getService();
+		$this->error = [];
 	}
 
 	public function getCelsius()
@@ -22,34 +24,35 @@ class Model
 	{
 		return $this->country;
 	}
-	
-	public function sendRequestCelsius()
+
+	public function getError()
 	{
-		if (is_numeric($_POST['celsius']))
+		return $this->error;
+	}
+
+	public function sendRequestCelsius($dataset)
+	{
+		if (is_numeric($dataset['celsius']))
 		{
-			$data = array(TEMP_DATA => $_POST['celsius']);
-			
-			return $this->request->setData($data)->setURL(TEMP_URL)->setSection(TEMP_SECTION)->getContent($_POST['mode']);
+			$data = array(TEMP_DATA => $dataset['celsius']);
+
+			return $this->request->setData($data)->setURL(TEMP_URL)->setSection(TEMP_SECTION)->getContent($dataset['mode']);
 			
 		}
-		else
-		{
-			throw new Exception ("Field 'celsius' not number");
-		}
+
+		$this->error['celsius'] = CELSIUS_ERROR;
+		return false;
 	}
 	
-	public function sendRequestCountry()
+	public function sendRequestCountry($dataset)
 	{
-		if (preg_match('/^[A-Za-z]{2}+$/', $_POST['country']))
+		if (preg_match('/^[A-Za-z]{2}+$/', $dataset['country']))
 		{
-			$data = array(TEMP_DATA => strtoupper($_POST['country']));
-			
-			return $this->request->setData($data)->setURL(TEMP_URL)->setSection(TEMP_SECTION)->getContent($_POST['mode']);			
+			$data = array(COUNTRY_DATA => strtoupper($dataset['country']));
+
+			return $this->request->setData($data)->setURL(COUNTRY_URL)->setSection(COUNTRY_SECTION)->getContent($dataset['mode']);
 		}
-		else
-		{
-			throw new Exception ("The 'country' field is incorrect");
-		}
-		
+		$this->error['country'] = COUNTRY_ERROR;
+		return false;
 	}
 }

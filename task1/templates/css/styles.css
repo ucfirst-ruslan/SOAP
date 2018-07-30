@@ -1,0 +1,51 @@
+.section {
+  padding: 1rem 1.5rem;
+}
+
+.active,
+[v-cloak] {
+  display: none;
+}
+
+{
+  display: none
+}
+
+form h1 {
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+h2.title {
+  text-align: center;
+  padding: 20px 0;
+}
+
+h2.title span,
+form h1 span {
+  color: grey;
+}
+
+caption {
+  font-weight: 600;
+}
+
+.button.is-small {
+  font-size: 0.9rem;
+}
+
+.button.is-success {
+  color: #353535;
+}
+
+.button:focus {
+  border: 0;
+}
+
+.notification {
+  padding: .5rem 2.5rem .5rem 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+}

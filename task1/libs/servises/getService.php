@@ -4,7 +4,12 @@ include_once 'IGetServices.php';
 include_once 'curlService.php';
 include_once 'soapService.php';
 
-
+/**
+ * Class getService
+ *
+ * В принципе использование трейтов тут не имеет особого смысла,
+ * но мне хотелось попробовать эту технологию.
+ */
 class getService implements IGetServices
 {
 	use curlService, soapService;

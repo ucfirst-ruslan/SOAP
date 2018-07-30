@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ru.vuejs.org/js/vue.js"></script>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container  is-fluid">
+            <div id="app">
+                <div class="columns">
+                    <div class="column">
+                        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                            <caption>
+                                Album
+                            </caption>
+                            <thead>
+                                <tr>
+                                    <th>Artwork</th>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Add</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(album, i) in albums">
+                                    <td style="text-align: center;"><img v-bind:src="album.artwork"></td>
+                                    <td> {{ album.name }} </td>
+                                    <td>${{ album.price }} </td>
+                                    <td style="text-align: center;">
+                                        <button class="button is-small is-success" @click="addAlbumCart(i)" >Add to Cart</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column is-one-fifth">
+                        <div class="cart">
+                            <a href="#" v-on:click="launch"> <img src="./cart.png" alt=""></a>
+                            <div class="cart-num">{{ count }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal" v-bind:class="{'is-active':isActive}">
+                    <div class="modal-background"></div>
+                    <div class="modal-card">
+                        <header class="modal-card-head">
+                            <p class="modal-card-title">Cart</p>
+                            <button @click="close" class="delete" aria-label="close"></button>
+                        </header>
+                        <section class="modal-card-body">
+                            <table v-cloak class="table is-hoverable is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>Artwork</th>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Delete items</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-cloak v-for="(album, i) in albumCart" v-if="album.name">
+                                        <td style="text-align: center;"><img v-bind:src="album.artwork"></td>
+                                        <td> {{ album.name }} </td>
+                                        <td>${{ album.price }} </td>
+                                        <td style="text-align: center;">
+                                            <button class="button is-small is-danger" @click="removeAlbum(i)">Delete Album</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <footer class="modal-card-foot">
+                            <div v-if="!albumCart[0]">No products</div>
+                            <div v-else>Total Price: ${{ total }}</div>
+                        </footer>
+                    </div>
+                </div>
+                <!-- end app -->
+            </div>
+        </div>
+    </section>
+    <script src="main.js"></script>
+</body>
+<script>
+</script>
+
+</html>

@@ -1,12 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ruslan
- * Date: 25.07.18
- * Time: 12:28
- */
 
 class View
 {
-
+	/**
+	 * @param $template
+	 * @param null $dataset
+	 */
+	public function renderView($template, $dataset=null)
+	{
+		include_once __DIR__ .'/../'. $template;
+	}
 }

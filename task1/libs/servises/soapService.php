@@ -17,6 +17,6 @@ trait soapService
 		$content = $client->$section($this->data);
 
 		$section = $this->section.'Result';
-		$this->content = (array)$content->$section;
+		$this->content = $content->$section;
 	}
 }

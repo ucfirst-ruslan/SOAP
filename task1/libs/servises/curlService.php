@@ -13,6 +13,7 @@ trait curlService
 	{
 		$section = $this->section;
 		$url = $this->url.'/'.$section;
+		
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -25,7 +26,16 @@ trait curlService
 
 		if (200 == $info['http_code'])
 		{
-			$this->content = (array)simplexml_load_string($content);
+			$get = (array)simplexml_load_string($content);
+			if (array_key_exists('0', $get))
+			{
+				$this->content = $get[0];
+			}
+			else
+			{
+				$this->content = $get;
+			}
+
 		}
 		else
 		{
